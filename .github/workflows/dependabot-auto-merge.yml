@@ -1,4 +1,4 @@
-yamlname: Auto-merge Dependabot PRs
+name: Auto-merge Dependabot PRs
 
 on:
   pull_request:
