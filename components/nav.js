@@ -30,7 +30,7 @@ const fixed = (props) =>
 
 const Root = styled(Box, {
   shouldForwardProp: (prop) =>
-    !['bgColor', 'scrolled', 'toggled'].includes(prop)
+    !['bgColor', 'scrolled', 'toggled', 'color', 'dark'].includes(prop)
 })`
   position: fixed;
   top: 0;
@@ -104,7 +104,7 @@ const layout = (props) =>
         }
       `
 const NavBar = styled(Box, {
-  shouldForwardProp: (prop) => !['isMobile', 'toggled'].includes(prop)
+  shouldForwardProp: (prop) => !['isMobile', 'toggled','scrolled','color','dark'].includes(prop)
 })`
   display: none;
   ${layout};
@@ -200,7 +200,7 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
       as="header"
     >
       <Content>
-        <Flag scrolled={scrolled || fixed} />
+        <Flag scrolled={scrolled || fixed || undefined} />
         <Navigation
           as="nav"
           aria-hidden={!!mobile}

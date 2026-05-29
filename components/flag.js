@@ -21,7 +21,7 @@ const waveFlagScaled = keyframes`
 `
 
 const scrolled = (props) =>
-  props.scrolled &&
+  props.$scrolled &&
   css`
     transform: scale(0.875);
     height: 56px;
@@ -31,7 +31,9 @@ const scrolled = (props) =>
     }
   `
 
-const Base = styled('a')`
+const Base = styled('a', {
+  shouldForwardProp: (prop) => !['scrolled', '$scrolled'].includes(prop)
+})`
   background-image: url(https://assets.hackclub.com/flag-orpheus-top.svg);
   background-repeat: no-repeat;
   background-position: top left;
@@ -56,8 +58,8 @@ const Base = styled('a')`
   ${scrolled};
 `
 
-const Flag = (props) => (
-  <Base href="https://hackclub.com" title="Hack Club Homepage" {...props} />
+const Flag = ({ scrolled, ...props }) => (
+  <Base href="https://hackclub.com" title="Hack Club Homepage" $scrolled={scrolled} {...props} />
 )
 
 export default Flag
