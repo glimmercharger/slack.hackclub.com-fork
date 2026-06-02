@@ -404,12 +404,12 @@
     "type": "us-state",
     "url": "https://app.slack.com/client/E09V59WQY1E/C099PTJM5FF",
     "id": "C099PTJM5FF"
-  }
+  },
   {
     "channel": "reunion-island",
     "match": "reunion-island",
     "type": "island",
-    "url": "https://app.slack.com/client/E09V59WQY1E/C0B7H73EU7L"
+    "url": "https://app.slack.com/client/E09V59WQY1E/C0B7H73EU7L",
     "id": "C0B7H73EU7L"
   }
 ]
