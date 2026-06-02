@@ -190,11 +190,7 @@ const AgeInfoContent = () => (
       Not 13-18?
     </Heading>
     <Text sx={{ fontSize: [2, 3], color: 'slate', mb: 3 }}>
-      If you&apos;re over 18, you can still participate in our referral program,{' '}
-      <ThemeLink href="https://pyramid.hackclub.com/" target="_blank">
-        Pyramid Scheme
-      </ThemeLink>
-      , or check out our partner organization,{' '}
+      If you&apos;re over 18, check out our partner organization,{' '}
       <ThemeLink href="https://github.com/education/students" target="_blank">
         GitHub Education
       </ThemeLink>
