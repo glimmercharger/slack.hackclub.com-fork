@@ -3,11 +3,11 @@ import Meta from '@hackclub/meta'
 import Head from 'next/head'
 import { Box, Heading, Text, Link as ThemeLink } from 'theme-ui'
 import { useState, useRef, useCallback } from 'react'
+import usePrefersMotion from '../lib/use-prefers-motion'
 import channels from '../channels.json'
 
 import { thousands } from '../lib/members'
 import Footer from '../components/footer'
-import ForceTheme from '../components/force-theme'
 import Nav from '../components/nav'
 import Header from '../components/slack/header'
 import Slides from '../components/slides/Slides'
@@ -139,29 +139,68 @@ const GuideItem = ({ title, children, isOpen, onToggle }) => {
   )
 }
 
-const Card = ({ children, sx, ...props }) => (
-  <Box
-    sx={{
-      bg: 'white',
-      borderRadius: '16px',
-      p: ['1.5rem', '2rem'],
-      boxShadow: 'card',
-      border: '1px solid',
-      borderColor: 'smoke',
-      borderTop: '6px solid',
-      borderTopColor: 'primary',
-      transition: 'all 0.25s ease-in-out',
-      '&:hover': {
-        boxShadow: 'elevated',
-        transform: 'translateY(-6px)'
-      },
-      ...sx
-    }}
-    {...props}
-  >
-    {children}
-  </Box>
-)
+const Card = ({ children, sx, ...props }) => {
+  const cardRef = useRef(null)
+  const prefersMotion = usePrefersMotion()
+  const rafRef = useRef(null)
+  const pendingRef = useRef(null)
+
+  const handleMouseMove = prefersMotion
+    ? (e) => {
+        const el = cardRef.current
+        if (!el) return
+        const rect = el.getBoundingClientRect()
+        const rotateY = ((e.clientX - rect.left) / rect.width - 0.5) * 16
+        const rotateX = (0.5 - (e.clientY - rect.top) / rect.height) * 16
+        pendingRef.current = { rotateX, rotateY }
+        if (!rafRef.current) {
+          rafRef.current = requestAnimationFrame(() => {
+            const p = pendingRef.current
+            const el = cardRef.current
+            if (el && p) {
+              el.style.transition = 'box-shadow 0.1s ease-out'
+              el.style.transform = `perspective(800px) rotateX(${p.rotateX}deg) rotateY(${p.rotateY}deg) translateY(-6px)`
+              el.style.boxShadow = '0 20px 60px rgba(236,55,80,0.12)'
+            }
+            rafRef.current = null
+          })
+        }
+      }
+    : undefined
+
+  const handleMouseLeave = prefersMotion
+    ? () => {
+        const el = cardRef.current
+        if (!el) return
+        el.style.transition = 'all 0.4s ease-in-out'
+        el.style.transform = ''
+        el.style.boxShadow = ''
+      }
+    : undefined
+
+  return (
+    <Box
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      sx={{
+        bg: 'background',
+        borderRadius: '16px',
+        p: ['1.5rem', '2rem'],
+        boxShadow: 'card',
+        border: '1px solid',
+        borderColor: 'smoke',
+        borderTop: '6px solid',
+        borderTopColor: 'primary',
+        willChange: 'transform',
+        ...sx
+      }}
+      {...props}
+    >
+      {children}
+    </Box>
+  )
+}
 
 const MakeFigure = (props) => {
   const imgUrl = props.imgUrl
@@ -221,7 +260,8 @@ const TimelineItem = ({ version, date, children, isLast }) => (
         bg: 'primary',
         backgroundImage:
           'radial-gradient(ellipse farthest-corner at top left, #ff8c37, #ec3750)',
-        border: '4px solid white',
+        border: '4px solid',
+        borderColor: 'background',
         boxShadow: '0 0 0 2px rgba(236, 55, 80, 0.2)',
         flexShrink: 0,
         zIndex: 1,
@@ -409,7 +449,6 @@ const SlackPage = () => {
         description={`The Hack Club Slack is a community of ${thousands}k+ high school hackers around the world. Chat, meet new friends, code together, share your work.`}
         image="https://cloud-n6i5i4zb9-hack-club-bot.vercel.app/02020-07-25_d2dd4egb1th5k71w4uj0abbfkvvtnc01.jpeg"
       />
-      <ForceTheme theme="light" />
       <Nav />
       <Slides isOpen={slidesOpen} onClose={handleSlidesClose} />
       <Header onJoinClick={handleJoinClick} />

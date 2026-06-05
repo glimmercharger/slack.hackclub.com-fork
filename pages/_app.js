@@ -4,7 +4,6 @@ import '@hackclub/theme/fonts/reg-bold.css'
 import theme from '../lib/theme'
 import { ThemeUIProvider } from 'theme-ui'
 import { Provider as BalancerProvider } from 'react-wrap-balancer'
-
 const App = ({ Component, pageProps }) => (
   <ThemeUIProvider theme={theme}>
     <Meta as={Head}>
