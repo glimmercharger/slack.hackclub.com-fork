@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { css, keyframes } from '@emotion/react'
-import { Box, Container, Flex, Link, useColorMode } from 'theme-ui'
+import { Box, Container, Flex, Link } from 'theme-ui'
 import theme from '../lib/theme'
 import Icon from './icon'
 import Flag from './flag'
@@ -98,21 +98,8 @@ const layout = (props) =>
         }
         a {
           font-size: 18px;
-          position: relative;
-          &::after {
-            content: '';
-            display: block;
-            height: 2px;
-            background-color: ${theme.colors.primary};
-            transform: scaleX(0);
-            transition: transform 0.2s ease;
-            transform-origin: center;
-          }
           &:hover {
             color: ${theme.colors[hoverColor(props.color)]};
-          }
-          &:hover::after {
-            transform: scaleX(1);
           }
         }
       `
@@ -162,7 +149,6 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
   const [scrolled, setScrolled] = useState(false)
   const [toggled, setToggled] = useState(false)
   const [mobile, setMobile] = useState(false)
-  const [colorMode, setColorMode] = useColorMode()
 
   const onScroll = () => {
     const newState = window.scrollY >= 16
@@ -222,26 +208,6 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
           dark={dark}
           scrolled={scrolled}
         />
-        <Box
-          as="button"
-          type="button"
-          onClick={() => setColorMode(colorMode === 'dark' ? 'light' : 'dark')}
-          aria-label="Toggle dark mode"
-          sx={{
-            bg: 'transparent',
-            border: 'none',
-            cursor: 'pointer',
-            fontSize: '20px',
-            lineHeight: 1,
-            p: 1,
-            ml: 2,
-            color: 'inherit',
-            display: 'block',
-            ':focus-visible': { outline: '2px solid currentColor', outlineOffset: '2px', borderRadius: '4px' }
-          }}
-        >
-          {colorMode === 'dark' ? '☀' : '☾'}
-        </Box>
         <ToggleContainer color={toggleColor} onClick={handleToggleMenu}>
           <Icon glyph={toggled ? 'view-close' : 'menu'} />
         </ToggleContainer>
