@@ -308,7 +308,6 @@ const SlackPage = () => {
 
   const getBrowserTimezone = () => {
     if (typeof window === 'undefined') return null
-
     return window.Intl?.DateTimeFormat?.().resolvedOptions?.().timeZone || null
   }
 
@@ -465,7 +464,7 @@ const SlackPage = () => {
                 that channel doesn&apos;t exist, you make your own!
               </p>
               <MakeFigure
-                imgUrl="slack-channel.gif"
+                imgUrl="/slack-channel.gif"
                 imgDesc="A GIF showing channels in Slack"
               />
             </div>
@@ -476,7 +475,7 @@ const SlackPage = () => {
                 another way to connect with members of our community!
               </p>
               <MakeFigure
-                imgUrl="slack-dms.gif"
+                imgUrl="/slack-dms.gif"
                 imgDesc="A GIF showing how the DMs section looks like in Slack"
               />
             </div>
@@ -489,7 +488,7 @@ const SlackPage = () => {
                 channel or DM for a specific message on a specific day!
               </p>
               <MakeFigure
-                imgUrl="slack-search.gif"
+                imgUrl="/slack-search.gif"
                 imgDesc="A GIF showing the search bar in Slack"
               />
             </div>
@@ -509,23 +508,23 @@ const SlackPage = () => {
                 }}
               >
                 <MakeFigure
-                  imgUrl="default-slack-sidebar.png"
+                  imgUrl="/default-slack-sidebar.png"
                   imgDesc="How the Slack sidebar looks by default"
                 />
                 <MakeFigure
-                  imgUrl="slack-sidebar-small-icons.png"
+                  imgUrl="/slack-sidebar-small-icons.png"
                   imgDesc="Slack sidebar with small icons enabled"
                 />
                 <MakeFigure
-                  imgUrl="slack-sidebar-all-items-enabled.png"
+                  imgUrl="/slack-sidebar-all-items-enabled.png"
                   imgDesc="Slack sidebar with all icons enabled"
                 />
                 <MakeFigure
-                  imgUrl="slack-sidebar-all-items-disabled.png"
+                  imgUrl="/slack-sidebar-all-items-disabled.png"
                   imgDesc="Slack sidebar with most icons disabled"
                 />
                 <MakeFigure
-                  imgUrl="slack-sidebar-preferences.png"
+                  imgUrl="/slack-sidebar-preferences.png"
                   imgDesc="Options for the slack sidebar"
                 />
               </div>
@@ -635,8 +634,8 @@ const SlackPage = () => {
 
           <GuideItem
             title="Being good"
-            isOpen={openGuide === 3}
-            onToggle={() => handleGuideToggle(3)}
+            isOpen={openGuide === 2}
+            onToggle={() => handleGuideToggle(2)}
           >
             <p>
               Hack Club is special, because we insist on making it that way. We
@@ -732,7 +731,7 @@ const SlackPage = () => {
               >
                 {' '}
                 {geoLoading ? (
-                  'Looking up…'
+                  'Looking up\u2026'
                 ) : (
                   <>
                     Find your regional channel
@@ -762,6 +761,20 @@ const SlackPage = () => {
               #self
             </ChannelName>{' '}
           </Text>
+          <ThemeLink
+            href="/channels"
+            sx={{
+              display: 'inline-block',
+              mt: 2,
+              color: 'primary',
+              fontWeight: 700,
+              fontSize: '1rem',
+              textDecoration: 'none',
+              '&:hover': { textDecoration: 'underline' }
+            }}
+          >
+            Browse all regional channels →
+          </ThemeLink>
         </Card>
 
         {/* Changelog */}

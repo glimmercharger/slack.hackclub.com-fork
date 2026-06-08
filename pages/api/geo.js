@@ -39,7 +39,7 @@ export default async function handler(req, res) {
   }
 
   // Reject requests where we still cannot determine a usable client IP.
-  if (!ip || ip === '::1' || ip === '127.0.0.1' || ip.startsWith('192.168.') || ip.startsWith('10.')) {
+if (!ip || ip === '::1' || ip === '127.0.0.1' || ip.startsWith('192.168.') || ip.startsWith('10.') || /^172\.(1[6-9]|2\d|3[01])\./.test(ip)) {
     return res.status(400).json({ error: 'Could not determine client IP' })
   }
 

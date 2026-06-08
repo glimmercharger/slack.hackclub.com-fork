@@ -150,12 +150,9 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
   const [toggled, setToggled] = useState(false)
   const [mobile, setMobile] = useState(false)
 
-  const onScroll = () => {
-    const newState = window.scrollY >= 16
-
-    setScrolled(newState)
-  }
-
+  const onScroll=React.useCallback(()=>{
+    setScrolled(window.scrollY>=16)
+  },[])
   const handleToggleMenu = () => {
     setToggled((t) => !t)
   }
@@ -167,8 +164,8 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
       }
 
       const mobileQuery = window.matchMedia('(max-width: 48em)')
-      mobileQuery.addEventListener('change', () => {
-        setMobile(true)
+      mobileQuery.addEventListener('change', (e) => {
+        setMobile(e.matches)
         setToggled(false)
       })
     }

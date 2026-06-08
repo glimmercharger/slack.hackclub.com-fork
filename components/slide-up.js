@@ -20,8 +20,8 @@ const SlideUp = ({ duration = 500, delay = 0, ...props }) => (
     {...props}
     style={{
       ...(props.style || {}),
-      animationDuration: 0 + 'ms',
-      animationDelay: 0 + 'ms'
+      animationDuration: duration + 'ms',
+      animationDelay: delay + 'ms'
     }}
   />
 )

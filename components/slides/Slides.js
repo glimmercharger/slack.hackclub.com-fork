@@ -24,7 +24,7 @@ const slideData = [
     downSlide: {
       id: 'conduct-content',
       type: 'fetch',
-      url: 'https://hackclub.com/conduct'
+      url: 'https://hackclub.com/conduct/'
     }
   },
   {
@@ -248,7 +248,7 @@ const ConductContent = ({ content, loading, error }) => (
         <Text sx={{ color: 'slate', fontSize: 2, mb: 2 }}>
           Could not load the Code of Conduct.
         </Text>
-        <ThemeLink href="https://hackclub.com/conduct" target="_blank">
+        <ThemeLink href="https://hackclub.com/conduct/" target="_blank">
           Read it on hackclub.com →
         </ThemeLink>
       </Box>
@@ -441,7 +441,7 @@ const Slides = ({ isOpen, onClose }) => {
 
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
-  }, [isOpen, currentX, currentY, onClose])
+  }, [isOpen, handleAction, onClose])
 
   useEffect(() => {
     if (isOpen) {
