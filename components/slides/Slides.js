@@ -469,22 +469,26 @@ const Slides = ({ isOpen, onClose }) => {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [isOpen, currentX, currentY, handleAction, onClose])
 
-  useEffect(() => {
-    if (currentY === 1 && slideData[currentX]?.downSlide?.type === 'fetch') {
-      setConductData({ content: null, loading: true, error: null })
-      fetch('/api/conduct')
-        .then((res) => {
-          if (!res.ok) throw new Error('Failed to fetch')
+  useEffect(()=>{
+    if(currentY===1&&slideData[currentX]?.downSlide?.type==='fetch'){
+      const controller=new AbortController()
+      setConductData({content:null,loading:true,error:null})
+      fetch('/api/conduct',{signal:controller.signal})
+      .then((res)=>{
+        if(!res.ok)throw new Error("failed to fetch")
           return res.text()
-        })
-        .then((html) => {
-          setConductData({ content: html, loading: false, error: null })
-        })
-        .catch(() => {
-          setConductData({ content: null, loading: false, error: true })
-        })
+      })
+      .then((html)=>{
+        setConductData({content:html,loading:false,error:null})
+
+      })
+      .catch((err)=>{
+        if(err.name==='AbortError')return
+        setConductData({content:null,loading:false,error:true})
+      })
+      return()=>controller.abort()
     }
-  }, [currentX, currentY])
+  },[currentX,currentY])
 
   if (!isOpen) return null
 

@@ -158,20 +158,24 @@ function Header({ unfixed, color, bgColor, dark, fixed, ...props }) {
   }
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window === 'undefined') return
+
       if (!unfixed) {
         window.addEventListener('scroll', onScroll)
       }
 
       const mobileQuery = window.matchMedia('(max-width: 48em)')
-      mobileQuery.addEventListener('change', (e) => {
+      const handleMobileChange = (e) => {
         setMobile(e.matches)
         setToggled(false)
-      })
-    }
+      }
+      mobileQuery.addEventListener('change',handleMobileChange)
+      setMobile(mobileQuery.matches)
+    
 
     return () => {
       window.removeEventListener('scroll', onScroll)
+      mobileQuery.removeEventListener('change',handleMobileChange)
     }
   }, [unfixed])
 
