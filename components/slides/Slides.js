@@ -197,7 +197,7 @@ const AgeInfoContent = () => (
       .
     </Text>
     <Text sx={{ fontSize: [2, 3], color: 'slate' }}>
-      If you&apos;re under 13, we&apos;ll be waiting for you on your birthday!
+       If you&apos;re under 13, we&apos;ll be waiting for you on your birthday!
     </Text>
   </Box>
 )
@@ -213,25 +213,25 @@ const SlackGuideContent = () => (
         so much happening. We care about you, and wrote this guide to help you.
       </p>
       <p>
-        <strong>Channels:</strong> Channels are to Slack what food is to a
-        restaurant. The whole point! When you want to talk about something, you
-        find the channel with other people who want to talk about it, or if that
-        channel doesn&apos;t exist, you make your own.
+        <strong>Channels:</strong> The best place to meet new people and have interesting
+                conversations. When you want to talk about something, you find
+                the channel with other people who want to talk about it, or if
+                that channel doesn&apos;t exist, you make your own!
       </p>
       <p>
-        <strong>DMs:</strong> You can also DM individual users or groups of
-        users.
+        <strong>DMs:</strong> You can also DM individual users or groups of users. This is
+                another way to connect with members of our community!
       </p>
       <p>
-        <strong>Search:</strong> The search bar at the top of your Slack is how
-        you find channels to join, find people to DM, and look up messages. It
-        has a lot of hidden functions; for example you can search in a specific
-        channel for a specific message on a specific day.
+        <strong>Search:</strong> The search bar at the top of your Slack is how you find channels
+                to join, find people to DM, and look up messages. It has so many
+                hidden functions; for example you can search in a specific
+                channel or DM for a specific message on a specific day!
       </p>
       <p>
-        <strong>The Sidebar:</strong> Once you join a channel or start a DM, it
-        lives in your sidebar. You can play around and reorganize it in the way
-        that makes sense to you.
+        <strong>The Sidebar:</strong> Once you join a channel or start a DM, it lives in your sidebar.
+                You can play around and reorganize it in the way that makes
+                sense to you.
       </p>
     </Box>
   </Box>

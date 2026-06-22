@@ -2,8 +2,12 @@
     <img width="192" alt="Hack Club logo" src="https://assets.hackclub.com/flag-standalone.svg">
 </p>
 <h1 align="center">
-    The new <a href="https://slack.hackclub.com/">Hack Club Slack Landing Page!</a>!
+    The <a href="https://slack.hackclub.com/">Hack Club Slack Landing Page!</a>
 </h1>
+
+# Welcome to Hack Club!
+
+This is our Slack landing page for brand new users! 
 
 ## Development
 

@@ -572,13 +572,13 @@ const SlackPage = () => {
                 <ChannelName href="https://hackclub.enterprise.slack.com/archives/C0EA9S0A0">
                   #code
                 </ChannelName>{' '}
-                - A channel to get help with code
+                - A channel to discuss and get help with code
               </li>
               <li>
                 <ChannelName href="https://hackclub.enterprise.slack.com/archives/C6C026NHJ">
                   #hardware
                 </ChannelName>{' '}
-                - A channel to get help with hardware projects
+                - A channel to get discuss and help with hardware projects
               </li>
               <li>
                 <ChannelName href="https://hackclub.enterprise.slack.com/archives/C01504DCLVD">
