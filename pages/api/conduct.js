@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   try {
-    const response = await fetch('https://hackclub.com/conduct/')
+    const response = await fetch('https://glimmercharger.github.io/coc-in-html/')
     const html = await response.text()
 
     const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)

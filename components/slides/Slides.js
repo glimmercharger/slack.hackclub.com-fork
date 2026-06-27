@@ -24,7 +24,7 @@ const slideData = [
     downSlide: {
       id: 'conduct-content',
       type: 'fetch',
-      url: 'https://hackclub.com/conduct/'
+      url: 'https://hackclub.com/conduct'
     }
   },
   {
@@ -239,9 +239,6 @@ const SlackGuideContent = () => (
 
 const ConductContent = ({ content, loading, error }) => (
   <Box sx={{ maxWidth: '800px', mx: 'auto' }}>
-    <Heading as="h2" sx={{ fontSize: [3, 4], color: 'black', mb: 3 }}>
-      Code of Conduct
-    </Heading>
     {loading && <Text sx={{ color: 'slate', fontSize: 2 }}>Loading...</Text>}
     {error && (
       <Box>
